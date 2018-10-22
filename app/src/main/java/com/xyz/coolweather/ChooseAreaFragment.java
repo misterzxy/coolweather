@@ -51,7 +51,6 @@ public class ChooseAreaFragment extends Fragment {
     private City selectedCity;
     private int currentLevel;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
