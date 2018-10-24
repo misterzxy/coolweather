@@ -12,21 +12,25 @@ public class Suggestion {
 
     public Sport sport;
 
-
-    public class Comfort{
+    public class Comfort {
 
         @SerializedName("txt")
         public String info;
+
     }
 
-    public class CarWash{
+    public class CarWash {
+
         @SerializedName("txt")
         public String info;
+
     }
 
-    public class Sport{
+    public class Sport {
 
         @SerializedName("txt")
-        public  String info;
+        public String info;
+
     }
+
 }

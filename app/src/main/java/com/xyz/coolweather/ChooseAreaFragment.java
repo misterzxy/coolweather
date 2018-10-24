@@ -22,7 +22,6 @@ import com.xyz.coolweather.util.HttpUtil;
 import com.xyz.coolweather.util.Utility;
 
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -91,19 +90,19 @@ public class ChooseAreaFragment extends Fragment {
         queryProvinces();
     }
 
-    private void queryProvinces(){
+    private void queryProvinces() {
         titleText.setText("中国");
         backButton.setVisibility(View.GONE);
         provinceList = LitePal.findAll(Province.class);
-        if (provinceList.size() > 0){
+        if (provinceList.size() > 0) {
             dataList.clear();
-            for (Province province : provinceList){
+            for (Province province : provinceList) {
                 dataList.add(province.getProvinceName());
             }
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
             currentLevel = LEVEL_PROVINCE;
-        }else {
+        } else {
             String address = "http://guolin.tech/api/china";
             queryFromServer(address, "province");
         }
@@ -192,7 +191,6 @@ public class ChooseAreaFragment extends Fragment {
                         }
                     });
                 }
-
             }
         });
     }
