@@ -53,7 +53,8 @@ public class ChooseAreaFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.choose_area,container,false);
         titleText = (TextView)view.findViewById(R.id.title_text);
         backButton = (Button)view.findViewById(R.id.back_button);
@@ -68,28 +69,28 @@ public class ChooseAreaFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 if(currentLevel == LEVEL_PROVINCE){
-                    selectedProvince = provinceList.get(i);
+                    selectedProvince = provinceList.get(position);
                     queryCities();
                 }else if (currentLevel == LEVEL_CITY){
-                    selectedCity = cityList.get(i);
+                    selectedCity = cityList.get(position);
                     queryCounties();
                 }else if (currentLevel == LEVEL_COUNTY){
-                    String weatherId = countyList.get(i).getWeatherId();
-
-                    if(getActivity() instanceof MainActivity){
-                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
-                        intent.putExtra("weather_id", weatherId);
-                        startActivity(intent);
-                        getActivity().finish();
-                    }else if (getActivity() instanceof WeatherActivity){
-                        WeatherActivity activity = (WeatherActivity)getActivity();
-                        activity.drawerLayout.closeDrawers();
-                        activity.swipeRefreshLayout.setRefreshing(true);
-                        activity.requestWeather(weatherId);
-
-                    }
+//                    String weatherId = countyList.get(position).getWeatherId();
+//
+//                    if(getActivity() instanceof MainActivity){
+//                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
+//                        intent.putExtra("weather_id", weatherId);
+//                        startActivity(intent);
+//                        getActivity().finish();
+//                    }else if (getActivity() instanceof WeatherActivity){
+//                        WeatherActivity activity = (WeatherActivity)getActivity();
+//                        activity.drawerLayout.closeDrawers();
+//                        activity.swipeRefreshLayout.setRefreshing(true);
+//                        activity.requestWeather(weatherId);
+//
+//                    }
                 }
             }
         });
